@@ -1,1 +1,4 @@
 .idea/
+fkbutils.egg-info/
+build/
+dist/
