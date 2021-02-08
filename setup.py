@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
     required = f.read().splitlines()
 
 setup(name='fkbutils',
-      version="0.2.0",
+      version="0.2.1",
       description='Utility functions that I need often across multiple projects!',
       install_requires=required,
       include_package_data=True,
