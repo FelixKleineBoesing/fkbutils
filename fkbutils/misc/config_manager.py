@@ -17,6 +17,7 @@ class ConfigManager:
         if default_variables is None:
             default_variables = {}
         self.default_variables = default_variables
+        self.variables = {}
         if env_file is not None:
             if os.path.isfile(env_file):
                 load_dotenv(env_file)
@@ -24,12 +25,14 @@ class ConfigManager:
                 logging.error("env file is not found")
 
     def get_value(self, key: str):
-        if key in self.default_variables:
-            return self.default_variables[key]
+        if key in self.variables:
+            return self.variables[key]
         elif key in os.environ:
             return os.environ[key]
+        elif key in self.default_variables:
+            return self.default_variables[key]
         else:
             raise KeyError("Key not present!")
 
     def overwride_value(self, key: str, value):
-        self.default_variables[key] = value
+        self.variables[key] = value
