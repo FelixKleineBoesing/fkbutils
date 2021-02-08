@@ -3,3 +3,4 @@ numpy>=1.18.5
 redis
 psycopg2
 pymongo
+python-dotenv
