@@ -78,7 +78,7 @@ class PostgresWrapper:
         if table_name is not None:
             cursor = self.get_query("SELECT * from {} LIMIT 1;".format(table_name), schema=schema)
 
-        desc = cursor.description()
+        desc = cursor.description
         column_names = [des[0] for des in desc]
         return column_names
 
@@ -156,7 +156,7 @@ class PostgresWrapper:
             if fetch:
                 table = cursor.fetchall()
                 if len(table) > 0:
-                    data = pd.DataFrame(table, columns=self.get_column_names(cursor))
+                    data = pd.DataFrame(table, columns=self.get_column_names(cursor=cursor))
                 else:
                     data = pd.DataFrame(table)
                 return data
